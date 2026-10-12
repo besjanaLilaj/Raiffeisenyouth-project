@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f6f6f3">
+    <title>Raiffeisen Youth spending demo</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main class="app">
+      <header class="header">
+        <a class="brand" href="#" aria-label="Raiffeisen Youth home">
+          <span class="brand-mark">R</span>
+          <span class="brand-copy">
+            <span class="brand-name">raiffeisen</span>
+            <span class="brand-subname">YOUTH</span>
+          </span>
+        </a>
+        <button class="visibility-button" id="visibility-button" type="button" aria-label="Hide balances">
+          <span id="visibility-icon" aria-hidden="true">◉</span>
+          <span class="notification-dot" aria-hidden="true"></span>
+        </button>
+      </header>
+
+      <div class="page-content">
+        <section class="greeting">
+          <h1>Hey, Alex 👋</h1>
+          <p>Here’s your money at a glance.</p>
+        </section>
+
+        <section class="summary-card" aria-label="Spending summary">
+          <div class="summary-topline">
+            <span class="summary-label">YOU’VE SPENT</span>
+            <span class="demo-badge"><span class="live-dot"></span> DEMO</span>
+          </div>
+          <p class="summary-amount" id="summary-spent"></p>
+          <div class="summary-divider"></div>
+          <div class="summary-bottom">
+            <div>
+              <span class="summary-foot-label" id="budget-period-label"></span>
+              <strong class="summary-foot-value" id="summary-limit"></strong>
+            </div>
+            <div class="summary-right">
+              <span class="summary-foot-label">Still available</span>
+              <strong class="remaining-amount" id="summary-remaining"></strong>
+            </div>
+          </div>
+          <div class="progress-track summary-progress">
+            <span class="progress-fill" id="summary-progress"></span>
+          </div>
+          <p class="summary-hint">Nice work — you’re within your budget!</p>
+        </section>
+
+        <div class="period-picker" role="group" aria-label="Spending period">
+          <button class="period-option" type="button" data-period="week" aria-pressed="false">This week</button>
+          <button class="period-option selected" type="button" data-period="month" aria-pressed="true">This month</button>
+        </div>
+
+        <section id="budgets-section" class="content-section">
+          <div class="section-heading">
+            <h2>Your budgets</h2>
+            <button class="text-button" id="budgets-see-all" type="button">See all</button>
+          </div>
+          <div class="card" id="budgets-list"></div>
+          <p class="edit-hint" id="edit-hint" hidden>Tap a category to change its monthly limit.</p>
+        </section>
+
+        <section id="activity-section" class="content-section transactions-section">
+          <div class="section-heading">
+            <h2>Recent activity</h2>
+            <button class="text-button" id="activity-see-all" type="button">See all</button>
+          </div>
+          <div class="card" id="transactions-list"></div>
+        </section>
+
+        <aside class="tip-card" id="tip-card">
+          <span class="tip-icon" aria-hidden="true">✨</span>
+          <span class="tip-copy">
+            <strong>Little spends add up!</strong>
+            <span>Food &amp; drinks is your top category this month. A coffee at home could save you 350 ALL.</span>
+          </span>
+          <span class="tip-arrow" aria-hidden="true">›</span>
+        </aside>
+
+        <p class="disclaimer">DEMO ONLY · Sample transactions and amounts · Not connected to a bank account</p>
+      </div>
+
+      <nav class="tab-bar" aria-label="Main navigation">
+        <button class="tab selected" type="button" data-tab="home" aria-selected="true">
+          <span class="tab-icon" aria-hidden="true">⌂</span><span>Home</span>
+        </button>
+        <button class="tab" type="button" data-tab="activity" aria-selected="false">
+          <span class="tab-icon" aria-hidden="true">↕</span><span>Activity</span>
+        </button>
+        <button class="tab" type="button" data-tab="budgets" aria-selected="false">
+          <span class="tab-icon" aria-hidden="true">◎</span><span>Budgets</span>
+        </button>
+      </nav>
+    </main>
+
+    <dialog class="budget-dialog" id="budget-dialog" aria-labelledby="dialog-title">
+      <form class="dialog-card" id="budget-form" novalidate>
+        <span class="dialog-handle" aria-hidden="true"></span>
+        <p class="dialog-eyebrow">YOUR MONTHLY BUDGET</p>
+        <h2 class="dialog-title" id="dialog-title"></h2>
+        <p class="dialog-description" id="dialog-description"></p>
+        <label class="input-container">
+          <span class="visually-hidden">Monthly budget limit in ALL</span>
+          <input id="limit-input" type="number" inputmode="numeric" min="1" step="1" placeholder="e.g. 10000" required>
+          <span class="input-currency">ALL</span>
+        </label>
+        <p class="error-text" id="form-error" role="alert"></p>
+        <button class="save-button" type="submit">Save new budget</button>
+        <button class="cancel-button" id="cancel-edit" type="button">Cancel</button>
+      </form>
+    </dialog>
+  </body>
+</html>

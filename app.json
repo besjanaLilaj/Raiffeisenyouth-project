@@ -1,0 +1,18 @@
+{
+  "expo": {
+    "name": "Raiffeisen Youth",
+    "slug": "raiffeisen-youth-spending-demo",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "backgroundColor": "#F6F6F3"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "edgeToEdgeEnabled": true
+    }
+  }
+}
